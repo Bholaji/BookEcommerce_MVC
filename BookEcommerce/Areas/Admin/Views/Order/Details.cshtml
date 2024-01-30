@@ -125,7 +125,7 @@
 								<div class="col-9">
 									@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
 									{
-										<input asp-for="OrderHeader.Carrier" type="text" class="form-control" />
+										<input asp-for="OrderHeader.Carrier" id="carrier" type="text" class="form-control" />
 									}
 									else
 									{
@@ -138,7 +138,7 @@
 								<div class="col-9">
 									@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
 									{
-										<input asp-for="OrderHeader.TrackingNumber" type="text" class="form-control" />
+										<input asp-for="OrderHeader.TrackingNumber" id="trackingNumber" type="text" class="form-control" />
 									}
 									else
 									{
@@ -265,5 +265,25 @@
 
 @section scripts {
 	<partial name="_ValidationScriptsPartial" />
-
+	<script>
+		function validateInput() {
+			if (document.getElementById("trackingNumber").value == "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please enter tracking number!',
+				});
+				return false;
+			}
+			if (document.getElementById("carrier").value == "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please enter carrier!',
+				});
+				return false;
+			}
+			return true;
+		}
+	</script>
 }

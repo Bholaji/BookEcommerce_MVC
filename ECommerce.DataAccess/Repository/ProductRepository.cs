@@ -31,13 +31,8 @@ namespace ECommerce.DataAccess.Repository
 				objFromDb.Description = obj.Description;
 				objFromDb.CategoryId = obj.CategoryId;
 				objFromDb.Author = obj.Author;
-				//objFromDb.ProductImages = obj.ProductImages;
-				if (obj.ImageUrl != null)
-				{
-					objFromDb.ImageUrl = obj.ImageUrl;
-				}
+				objFromDb.ProductImages = obj.ProductImages;
 			}
-			//_db.Products.Update(obj);
 		}
     }
 }
